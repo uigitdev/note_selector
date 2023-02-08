@@ -1,8 +1,6 @@
 import 'package:note_selector/note_selector.dart';
 
-enum ProviderAccess {
-  auth,
-}
+enum ProviderAccess { auth, home }
 
 class Providers {
   Providers._();
@@ -12,6 +10,9 @@ class Providers {
     switch (access) {
       case ProviderAccess.auth:
         providers.add(ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()));
+        break;
+      case ProviderAccess.home:
+        providers.add(ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()));
         break;
     }
 

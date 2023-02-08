@@ -19,4 +19,7 @@ class Textbook{
   static const String hintPassword = 'Password';
   static const String hintEmail = 'Email';
 
+  static const String homeNavigationNote = 'Notes';
+  static const String homeNavigationProfile = 'Profile';
+
 }
