@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     userLocator.observeUser();
     return MaterialApp(
+      title: Textbook.appName,
       debugShowCheckedModeBanner: false,
       initialRoute: RouterLocator.initRoute(),
       routes: RouterLocator.routes(),
