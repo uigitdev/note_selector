@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  provider:
+  uigitdev_stream_holder:
+  uigitdev_request_holder:
 
 
   # The following adds the Cupertino Icons font to your application.
