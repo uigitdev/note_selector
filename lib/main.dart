@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    userLocator.observeUser();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: RouterLocator.initRoute(),

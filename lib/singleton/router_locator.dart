@@ -1,7 +1,8 @@
 import 'package:note_selector/note_selector.dart';
 
 enum RouterName {
-  auth('/auth');
+  auth('/auth'),
+  home('/home');
 
   const RouterName(this.path);
 
@@ -21,6 +22,7 @@ class RouterLocator {
   static Map<String, Widget Function(BuildContext)> routes() {
     final routes = <String, Widget Function(BuildContext)>{};
     routes.putIfAbsent(RouterName.auth.path, () => (context) => const AuthPage());
+    routes.putIfAbsent(RouterName.home.path, () => (context) => const HomePage());
 
     assert(routes.keys.length == RouterName.values.length, 'Missing route item'.toUpperCase());
     return routes;
