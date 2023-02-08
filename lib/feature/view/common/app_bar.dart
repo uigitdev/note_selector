@@ -14,7 +14,7 @@ class MAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) => AppBar(
         backgroundColor: MTheme.accent,
-        elevation: 0,
+        elevation: 2,
         title: Text(
           title,
           style: MTextStyle.appBarTitle,
