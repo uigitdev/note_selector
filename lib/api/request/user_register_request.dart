@@ -1,5 +1,5 @@
 ///User Auth API [path] does not exists.
-///In that case it will be a dummy Auth Request with a [UserRegisterRequest] param.
+///In that case it will be a dummy Auth Request with a [UserRegisterModel] param.
 
 import 'package:note_selector/note_selector.dart';
 
