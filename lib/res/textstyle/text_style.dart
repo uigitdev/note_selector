@@ -8,4 +8,15 @@ class MTextStyle {
         fontSize: Dimens.appBarTitle,
         fontWeight: FontWeight.w500,
       );
+
+  static TextStyle get buttonTitle => const TextStyle(
+        color: MTheme.buttonTitle,
+        fontSize: Dimens.subtitle,
+        fontWeight: FontWeight.w600,
+      );
+
+  static TextStyle get smallInfo => const TextStyle(
+    color: MTheme.title,
+    fontSize: Dimens.info,
+  );
 }
