@@ -40,6 +40,10 @@ class UserRegisterRequest extends HTTPRequestHolder<UserModel> {
           "email": userRegisterModel.email,
           "name": userRegisterModel.name,
         },
+        dummyErrorResponse: HTTPRequestHolderDummyErrorResponse(
+          isDummyErrorResponse: false,
+          error: ErrorHint('auth/email-already-exists'),
+        ),
       );
 
   @override

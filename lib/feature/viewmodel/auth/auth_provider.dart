@@ -2,7 +2,7 @@ import 'package:note_selector/note_selector.dart';
 
 enum AuthPageState { main, login, register }
 
-enum AuthErrorState { none, emptyField, authFailed }
+enum AuthErrorState { none, emptyField }
 
 class AuthProvider extends ChangeNotifier {
   final _repo = AuthRepositoryImpl();
@@ -19,7 +19,7 @@ class AuthProvider extends ChangeNotifier {
         loginErrorStateStreamHolder.addData(AuthErrorState.none);
         final user = await _repo.login(userLoginModel).catchError((e) {
           loginButtonStateStreamHolder.addData(false);
-          loginErrorStateStreamHolder.addData(AuthErrorState.authFailed);
+          loginErrorStateStreamHolder.addError(e);
           return null;
         });
         if (user != null) {
@@ -42,7 +42,7 @@ class AuthProvider extends ChangeNotifier {
         registerErrorStateStreamHolder.addData(AuthErrorState.none);
         final user = await _repo.register(userRegisterModel).catchError((e) {
           registerButtonStateStreamHolder.addData(false);
-          registerErrorStateStreamHolder.addData(AuthErrorState.authFailed);
+          registerErrorStateStreamHolder.addError(e);
           return null;
         });
         if (user != null) {
