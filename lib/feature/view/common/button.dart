@@ -36,11 +36,11 @@ class MButton extends StatelessWidget {
                     style: MTextStyle.buttonTitle,
                   ),
                 ),
-                const SizedBox(width: Dimens.padding / 1.5),
+                const SizedBox(width: Dimens.paddingLeftRightSmall),
                 isProgress
                     ? const SizedBox(
-                        width: Dimens.buttonHeight / 2.5,
-                        height: Dimens.buttonHeight / 2.5,
+                        width: Dimens.buttonProgressHeight,
+                        height: Dimens.buttonProgressHeight,
                         child: CircularProgressIndicator(
                           color: MTheme.buttonTitle,
                           strokeWidth: 3,

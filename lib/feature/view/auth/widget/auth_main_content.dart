@@ -15,7 +15,7 @@ class AuthMainContent extends StatelessWidget {
                 Textbook.buttonLogin,
                 () => provider.authPageStateStreamHolder.addData(AuthPageState.login),
               ),
-              const SizedBox(height: Dimens.padding / 2),
+              const SizedBox(height: Dimens.paddingTopBottomSmall),
               PaddingButton(
                 Textbook.buttonRegister,
                 () => provider.authPageStateStreamHolder.addData(AuthPageState.register),
