@@ -10,4 +10,6 @@ class MTheme {
   static const buttonTitle = Colors.white;
 
   static const title = Colors.black;
+
+  static const error = Colors.red;
 }
