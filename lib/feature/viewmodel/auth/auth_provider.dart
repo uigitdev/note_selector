@@ -16,6 +16,7 @@ class AuthProvider extends ChangeNotifier {
     if (!loginButtonStateStreamHolder.data) {
       loginButtonStateStreamHolder.addData(true);
       if (userLoginModel.isFillAttributes()) {
+        loginErrorStateStreamHolder.addData(AuthErrorState.none);
         final user = await _repo.login(userLoginModel).catchError((e) {
           loginButtonStateStreamHolder.addData(false);
           loginErrorStateStreamHolder.addData(AuthErrorState.authFailed);
@@ -38,6 +39,7 @@ class AuthProvider extends ChangeNotifier {
     if (!registerButtonStateStreamHolder.data) {
       registerButtonStateStreamHolder.addData(true);
       if (userRegisterModel.isFillAttributes()) {
+        registerErrorStateStreamHolder.addData(AuthErrorState.none);
         final user = await _repo.register(userRegisterModel).catchError((e) {
           registerButtonStateStreamHolder.addData(false);
           registerErrorStateStreamHolder.addData(AuthErrorState.authFailed);
