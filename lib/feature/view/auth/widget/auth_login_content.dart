@@ -28,7 +28,7 @@ class _AuthLoginContentState extends State<AuthLoginContent> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       PaddingInputField(Textbook.hintUsername, usernameController, isEnabled: !isInProgress!),
-                      const SizedBox(height: Dimens.padding / 2),
+                      const SizedBox(height: Dimens.paddingTopBottomSmall),
                       PaddingInputField(Textbook.hintPassword, passwordController, isSecure: true, isEnabled: !isInProgress),
                       StreamHolderBuilder<AuthErrorState>(
                         streamHolder: provider.loginErrorStateStreamHolder,
@@ -49,7 +49,7 @@ class _AuthLoginContentState extends State<AuthLoginContent> {
                           }
                         },
                       ),
-                      const SizedBox(height: Dimens.padding * 2),
+                      const SizedBox(height: Dimens.paddingTopBottomBig),
                       PaddingButton(
                         Textbook.buttonLogin,
                         () => provider.login(
@@ -60,7 +60,7 @@ class _AuthLoginContentState extends State<AuthLoginContent> {
                         ),
                         isProgress: isInProgress,
                       ),
-                      const SizedBox(height: Dimens.padding * 2),
+                      const SizedBox(height: Dimens.paddingTopBottomBig),
                       Center(
                         child: GestureDetector(
                           child: Text(

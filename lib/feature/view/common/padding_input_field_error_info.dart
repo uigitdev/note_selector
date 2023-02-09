@@ -14,7 +14,7 @@ class PaddingInputFieldErrorInfo extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: Dimens.padding,
         right: Dimens.padding,
-        top: Dimens.padding / 2,
+        top: Dimens.paddingTopBottomSmall,
       ),
       child: Text(
         title,

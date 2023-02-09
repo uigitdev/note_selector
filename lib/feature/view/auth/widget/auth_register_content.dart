@@ -30,11 +30,11 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       PaddingInputField(Textbook.hintName, nameController, isEnabled: !isInProgress!),
-                      const SizedBox(height: Dimens.padding / 2),
+                      const SizedBox(height: Dimens.paddingTopBottomSmall),
                       PaddingInputField(Textbook.hintUsername, usernameController, isEnabled: !isInProgress),
-                      const SizedBox(height: Dimens.padding / 2),
+                      const SizedBox(height: Dimens.paddingTopBottomSmall),
                       PaddingInputField(Textbook.hintEmail, emailController, isEnabled: !isInProgress),
-                      const SizedBox(height: Dimens.padding / 2),
+                      const SizedBox(height: Dimens.paddingTopBottomSmall),
                       PaddingInputField(Textbook.hintPassword, passwordController, isSecure: true, isEnabled: !isInProgress),
                       StreamHolderBuilder<AuthErrorState>(
                         streamHolder: provider.registerErrorStateStreamHolder,
@@ -55,7 +55,7 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
                           }
                         },
                       ),
-                      const SizedBox(height: Dimens.padding * 2),
+                      const SizedBox(height: Dimens.paddingTopBottomBig),
                       PaddingButton(
                         Textbook.buttonRegister,
                         () => provider.register(
@@ -68,7 +68,7 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
                         ),
                         isProgress: isInProgress,
                       ),
-                      const SizedBox(height: Dimens.padding * 2),
+                      const SizedBox(height: Dimens.paddingTopBottomBig),
                       Center(
                         child: GestureDetector(
                           child: Text(
