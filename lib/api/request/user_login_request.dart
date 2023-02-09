@@ -35,8 +35,8 @@ class UserLoginRequest extends HTTPRequestHolder<UserModel> {
         duration: const Duration(seconds: 3),
         json: {
           "username": userLoginModel.username,
-          "email": 'thomascgoodman@dayrep.com',
-          "name": 'Thomas C. Goodman',
+          "email": '${userLoginModel.username}@${userLoginModel.username}.com',
+          "name": userLoginModel.username.toUpperCase(),
         },
         dummyErrorResponse: HTTPRequestHolderDummyErrorResponse(
           isDummyErrorResponse: false,
