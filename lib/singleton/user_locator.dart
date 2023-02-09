@@ -9,7 +9,7 @@ class UserLocator {
 
   final userStreamHolder = StreamHolder<UserModel?>(null);
 
-  void observeUser() {
-    userStreamHolder.stream.listen((user) => user == null ? routerLocator.closeAll(RouterName.auth) : null);
-  }
+  void observeUser() => userStreamHolder.stream.listen((user) => user == null ? routerLocator.closeAll(RouterName.auth) : null);
+
+  void logout() => userStreamHolder.addData(null);
 }
