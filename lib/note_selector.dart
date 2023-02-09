@@ -34,3 +34,4 @@ export 'package:note_selector/feature/view/home/widget/home_profile_content.dart
 export 'package:note_selector/feature/view/home/widget/home_notes_content.dart';
 export 'package:note_selector/feature/view/common/padding_input_field_error_info.dart';
 export 'package:note_selector/feature/view/common/error_body.dart';
+export 'package:note_selector/feature/viewmodel/home/profile_provider.dart';
