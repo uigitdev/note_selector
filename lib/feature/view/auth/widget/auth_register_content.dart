@@ -80,7 +80,7 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
                     overflow: TextOverflow.ellipsis,
                     style: MTextStyle.smallInfo,
                   ),
-                  onTap: () => provider.authPageStateStreamHolder.addData(AuthPageState.login),
+                  onTap: () => provider.addPageState(AuthPageState.login),
                 ),
               ),
             ],
