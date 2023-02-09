@@ -25,4 +25,6 @@ class Textbook{
   static const String errorAuthEmpty = 'Fields are required';
   static const String errorAuthFailed = 'Something went wrong';
 
+  static const String globalErrorInfo = 'Something went wrong';
+
 }
