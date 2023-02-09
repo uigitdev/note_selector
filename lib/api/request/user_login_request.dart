@@ -38,6 +38,10 @@ class UserLoginRequest extends HTTPRequestHolder<UserModel> {
           "email": 'thomascgoodman@dayrep.com',
           "name": 'Thomas C. Goodman',
         },
+        dummyErrorResponse: HTTPRequestHolderDummyErrorResponse(
+          isDummyErrorResponse: false,
+          error: ErrorHint('auth/id-token-expired'),
+        ),
       );
 
   @override
