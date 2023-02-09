@@ -1,16 +1,25 @@
 # note_selector
 
-A simple Flutter app in MVVM architecture and with provider, stream_holder and request_holder.
+A simple Flutter app in `MVVM` architecture and with `provider`, `stream_holder` and `request_holder`.
 
-## Getting Started
+## About the project
 
-This project is a starting point for a Flutter application.
+The application starts with an auth page where the user can login or register.<br>
+Due to the fact that the auth endpoint doesn't exist I used a dummy response with my `RequestHolder` package which is able to return dummy responses.<br>
+<br>
+After the success registration or login the user will be navigated to the home page.<br>
+Where the application fetch the data from a real api with my `RequestHolder` and add the value to a `StreamHolder`.<br>
+<br>
+Furthermore user can change its username and can logout where the `StreamHolder` detect the user changes and navigate the user to the auth page again.<br>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`Technology:` [Flutter](https://flutter.dev)<br>
+`Language:` [Dart](https://dart.dev)
+
+`Packages:`
+- [StreamHolder](https://pub.dev/packages/uigitdev_stream_holder)
+- [RequestHolder](https://pub.dev/packages/uigitdev_request_holder)
+- [Provider](https://pub.dev/packages/provider)
+
+`Architecture:` `MVVM`
