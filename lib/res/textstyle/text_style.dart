@@ -16,7 +16,13 @@ class MTextStyle {
       );
 
   static TextStyle get smallInfo => const TextStyle(
-    color: MTheme.title,
-    fontSize: Dimens.info,
-  );
+        color: MTheme.title,
+        fontSize: Dimens.info,
+      );
+
+  static TextStyle get inputErrorInfo => const TextStyle(
+        color: MTheme.error,
+        fontSize: Dimens.info,
+        fontWeight: FontWeight.w500,
+      );
 }

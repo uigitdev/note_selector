@@ -4,12 +4,14 @@ class PaddingInputField extends StatelessWidget {
   final String hint;
   final TextEditingController controller;
   final bool isSecure;
+  final bool isEnabled;
 
   const PaddingInputField(
     this.hint,
     this.controller, {
     Key? key,
     this.isSecure = false,
+    required this.isEnabled,
   }) : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class PaddingInputField extends StatelessWidget {
           obscureText: isSecure,
           enableSuggestions: !isSecure,
           autocorrect: !isSecure,
+          enabled: isEnabled,
           decoration: InputDecoration(
             hintText: hint,
           ),

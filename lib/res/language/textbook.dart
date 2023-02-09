@@ -22,4 +22,7 @@ class Textbook{
   static const String homeNavigationNote = 'Notes';
   static const String homeNavigationProfile = 'Profile';
 
+  static const String errorAuthEmpty = 'Fields are required';
+  static const String errorAuthFailed = 'Something went wrong';
+
 }
