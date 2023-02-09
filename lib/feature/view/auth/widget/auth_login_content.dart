@@ -12,6 +12,13 @@ class _AuthLoginContentState extends State<AuthLoginContent> {
   final passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Consumer<AuthProvider>(
         builder: (context, provider, _) => StreamHolderBuilder<bool>(
           streamHolder: provider.loginButtonStateStreamHolder,

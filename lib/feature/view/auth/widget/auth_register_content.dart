@@ -14,6 +14,15 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
   final passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Consumer<AuthProvider>(
         builder: (context, provider, _) => StreamHolderBuilder<bool>(
           streamHolder: provider.registerButtonStateStreamHolder,
