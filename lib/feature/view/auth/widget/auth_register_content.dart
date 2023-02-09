@@ -34,61 +34,67 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
               case StreamHolderState.hasData:
                 return SizedBox(
                   width: double.maxFinite,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      PaddingInputField(Textbook.hintName, nameController, isEnabled: !isInProgress!),
-                      const SizedBox(height: Dimens.paddingTopBottomSmall),
-                      PaddingInputField(Textbook.hintUsername, usernameController, isEnabled: !isInProgress),
-                      const SizedBox(height: Dimens.paddingTopBottomSmall),
-                      PaddingInputField(Textbook.hintEmail, emailController, isEnabled: !isInProgress),
-                      const SizedBox(height: Dimens.paddingTopBottomSmall),
-                      PaddingInputField(Textbook.hintPassword, passwordController, isSecure: true, isEnabled: !isInProgress),
-                      StreamHolderBuilder<AuthErrorState>(
-                        streamHolder: provider.registerErrorStateStreamHolder,
-                        builder: (context, state, data, error) {
-                          switch (state) {
-                            case StreamHolderState.none:
-                              return const SizedBox();
-                            case StreamHolderState.hasError:
-                              return PaddingInputFieldErrorInfo(title: error.toString());
-                            case StreamHolderState.hasData:
-                              switch (data!) {
-                                case AuthErrorState.none:
-                                  return const SizedBox();
-                                case AuthErrorState.emptyField:
-                                  return const PaddingInputFieldErrorInfo(title: Textbook.errorAuthEmpty);
-                              }
-                          }
-                        },
-                      ),
-                      const SizedBox(height: Dimens.paddingTopBottomBig),
-                      PaddingButton(
-                        Textbook.buttonRegister,
-                        () => provider.register(
-                          UserRegisterModel(
-                            name: nameController.text,
-                            username: usernameController.text,
-                            email: emailController.text,
-                            password: passwordController.text,
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.only(
+                      top: Dimens.paddingTopBottomBig,
+                      bottom: Dimens.paddingTopBottomBig,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PaddingInputField(Textbook.hintName, nameController, isEnabled: !isInProgress!),
+                        const SizedBox(height: Dimens.paddingTopBottomSmall),
+                        PaddingInputField(Textbook.hintUsername, usernameController, isEnabled: !isInProgress),
+                        const SizedBox(height: Dimens.paddingTopBottomSmall),
+                        PaddingInputField(Textbook.hintEmail, emailController, isEnabled: !isInProgress),
+                        const SizedBox(height: Dimens.paddingTopBottomSmall),
+                        PaddingInputField(Textbook.hintPassword, passwordController, isSecure: true, isEnabled: !isInProgress),
+                        StreamHolderBuilder<AuthErrorState>(
+                          streamHolder: provider.registerErrorStateStreamHolder,
+                          builder: (context, state, data, error) {
+                            switch (state) {
+                              case StreamHolderState.none:
+                                return const SizedBox();
+                              case StreamHolderState.hasError:
+                                return PaddingInputFieldErrorInfo(title: error.toString());
+                              case StreamHolderState.hasData:
+                                switch (data!) {
+                                  case AuthErrorState.none:
+                                    return const SizedBox();
+                                  case AuthErrorState.emptyField:
+                                    return const PaddingInputFieldErrorInfo(title: Textbook.errorAuthEmpty);
+                                }
+                            }
+                          },
+                        ),
+                        const SizedBox(height: Dimens.paddingTopBottomBig),
+                        PaddingButton(
+                          Textbook.buttonRegister,
+                          () => provider.register(
+                            UserRegisterModel(
+                              name: nameController.text,
+                              username: usernameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            ),
+                          ),
+                          isProgress: isInProgress,
+                        ),
+                        const SizedBox(height: Dimens.paddingTopBottomBig),
+                        Center(
+                          child: GestureDetector(
+                            child: Text(
+                              Textbook.textButtonToLogin,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: MTextStyle.smallInfo,
+                            ),
+                            onTap: () => provider.addPageState(AuthPageState.login),
                           ),
                         ),
-                        isProgress: isInProgress,
-                      ),
-                      const SizedBox(height: Dimens.paddingTopBottomBig),
-                      Center(
-                        child: GestureDetector(
-                          child: Text(
-                            Textbook.textButtonToLogin,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: MTextStyle.smallInfo,
-                          ),
-                          onTap: () => provider.addPageState(AuthPageState.login),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
             }
