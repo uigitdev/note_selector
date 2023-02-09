@@ -18,7 +18,7 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
         builder: (context, provider, _) => SizedBox(
           width: double.maxFinite,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PaddingInputField(Textbook.hintName, nameController),
@@ -28,6 +28,25 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
               PaddingInputField(Textbook.hintEmail, emailController),
               const SizedBox(height: Dimens.padding / 2),
               PaddingInputField(Textbook.hintPassword, passwordController, isSecure: true),
+              StreamHolderBuilder<AuthErrorState>(
+                streamHolder: provider.registerErrorStateStreamHolder,
+                builder: (context, state, data, _) {
+                  switch (state) {
+                    case StreamHolderState.none:
+                    case StreamHolderState.hasError:
+                      return const SizedBox();
+                    case StreamHolderState.hasData:
+                      switch (data!) {
+                        case AuthErrorState.none:
+                          return const SizedBox();
+                        case AuthErrorState.emptyField:
+                          return const PaddingInputFieldErrorInfo(title: Textbook.errorAuthEmpty);
+                        case AuthErrorState.authFailed:
+                          return const PaddingInputFieldErrorInfo(title: Textbook.errorAuthFailed);
+                      }
+                  }
+                },
+              ),
               const SizedBox(height: Dimens.padding * 2),
               StreamHolderBuilder<bool>(
                 streamHolder: provider.registerButtonStateStreamHolder,
@@ -53,14 +72,16 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
                 },
               ),
               const SizedBox(height: Dimens.padding * 2),
-              GestureDetector(
-                child: Text(
-                  Textbook.textButtonToLogin,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: MTextStyle.smallInfo,
+              Center(
+                child: GestureDetector(
+                  child: Text(
+                    Textbook.textButtonToLogin,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: MTextStyle.smallInfo,
+                  ),
+                  onTap: () => provider.authPageStateStreamHolder.addData(AuthPageState.login),
                 ),
-                onTap: () => provider.authPageStateStreamHolder.addData(AuthPageState.login),
               ),
             ],
           ),
