@@ -38,19 +38,18 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
                       PaddingInputField(Textbook.hintPassword, passwordController, isSecure: true, isEnabled: !isInProgress),
                       StreamHolderBuilder<AuthErrorState>(
                         streamHolder: provider.registerErrorStateStreamHolder,
-                        builder: (context, state, data, _) {
+                        builder: (context, state, data, error) {
                           switch (state) {
                             case StreamHolderState.none:
-                            case StreamHolderState.hasError:
                               return const SizedBox();
+                            case StreamHolderState.hasError:
+                              return PaddingInputFieldErrorInfo(title: error.toString());
                             case StreamHolderState.hasData:
                               switch (data!) {
                                 case AuthErrorState.none:
                                   return const SizedBox();
                                 case AuthErrorState.emptyField:
                                   return const PaddingInputFieldErrorInfo(title: Textbook.errorAuthEmpty);
-                                case AuthErrorState.authFailed:
-                                  return const PaddingInputFieldErrorInfo(title: Textbook.errorAuthFailed);
                               }
                           }
                         },
