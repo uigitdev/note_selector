@@ -59,8 +59,10 @@ class AuthProvider extends ChangeNotifier {
   }
 
   void addPageState(AuthPageState pageState){
-    authPageStateStreamHolder.addData(pageState);
-    loginErrorStateStreamHolder.addData(AuthErrorState.none);
-    registerErrorStateStreamHolder.addData(AuthErrorState.none);
+    if(!loginButtonStateStreamHolder.data && !registerButtonStateStreamHolder.data){
+      authPageStateStreamHolder.addData(pageState);
+      loginErrorStateStreamHolder.addData(AuthErrorState.none);
+      registerErrorStateStreamHolder.addData(AuthErrorState.none);
+    }
   }
 }
