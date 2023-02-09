@@ -22,5 +22,6 @@ class UserRegisterModel extends UserModel {
     required this.password,
   });
 
+  @override
   bool isFillAttributes() => username.isNotEmpty && name.isNotEmpty && email.isNotEmpty && password.isNotEmpty;
 }

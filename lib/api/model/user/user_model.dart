@@ -14,4 +14,6 @@ class UserModel {
         name: json['name'],
         email: json['email'],
       );
+
+  bool isFillAttributes() => username.isNotEmpty && name.isNotEmpty && email.isNotEmpty;
 }

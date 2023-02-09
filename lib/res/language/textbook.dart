@@ -10,6 +10,8 @@ class Textbook{
 
   static const String buttonLogin = 'Login';
   static const String buttonRegister = 'Register';
+  static const String buttonLogout = 'Logout';
+  static const String buttonSave = 'Save';
 
   static const String textButtonToRegister = 'Do not have an account yet? Register';
   static const String textButtonToLogin = 'Do you have an account? Login';

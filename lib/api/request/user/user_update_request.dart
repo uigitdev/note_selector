@@ -1,12 +1,12 @@
-///User Auth API [path] does not exists.
-///In that case it will be a dummy Auth Request with a [UserLoginModel] param.
+///User Update API [path] does not exists.
+///In that case it will be a dummy Update Request with a [UserModel] param.
 
 import 'package:note_selector/note_selector.dart';
 
-class UserLoginRequest extends HTTPRequestHolder<UserModel> {
-  final UserLoginModel userLoginModel;
+class UserUpdateRequest extends HTTPRequestHolder<UserModel> {
+  final UserModel userModel;
 
-  UserLoginRequest(this.userLoginModel);
+  UserUpdateRequest(this.userModel);
 
   @override
   HTTPRequestProtocol get protocol => HTTPRequestProtocol.HTTPS;
@@ -15,12 +15,13 @@ class UserLoginRequest extends HTTPRequestHolder<UserModel> {
   String get host => 'uigitdev.com';
 
   @override
-  String get path => '/v2/user-login';
+  String get path => '/v2/user-update';
 
   @override
   Map<String, dynamic> get requestBody => {
-        'username': userLoginModel.username,
-        'password': userLoginModel.password,
+        'name': userModel.name,
+        'username': userModel.username,
+        'email': userModel.email,
       };
 
   @override
@@ -34,13 +35,13 @@ class UserLoginRequest extends HTTPRequestHolder<UserModel> {
         isDummyResponse: true,
         duration: const Duration(seconds: 3),
         json: {
-          "username": userLoginModel.username,
-          "email": 'thomascgoodman@dayrep.com',
-          "name": 'Thomas C. Goodman',
+          "username": userModel.username,
+          "email": userModel.email,
+          "name": userModel.name,
         },
         dummyErrorResponse: HTTPRequestHolderDummyErrorResponse(
           isDummyErrorResponse: false,
-          error: ErrorHint('auth/id-token-expired'),
+          error: ErrorHint('update/missing-token'),
         ),
       );
 
