@@ -21,7 +21,7 @@ class _AuthRegisterContentState extends State<AuthRegisterContent> {
             switch (state) {
               case StreamHolderState.none:
               case StreamHolderState.hasError:
-                return const SizedBox();
+                return const ErrorBody();
               case StreamHolderState.hasData:
                 return SizedBox(
                   width: double.maxFinite,

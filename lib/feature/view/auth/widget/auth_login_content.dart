@@ -19,7 +19,7 @@ class _AuthLoginContentState extends State<AuthLoginContent> {
             switch (state) {
               case StreamHolderState.none:
               case StreamHolderState.hasError:
-                return const SizedBox();
+                return const ErrorBody();
               case StreamHolderState.hasData:
                 return SizedBox(
                   width: double.maxFinite,
