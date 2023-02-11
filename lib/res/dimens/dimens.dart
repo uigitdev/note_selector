@@ -10,6 +10,8 @@ class Dimens{
   static const double paddingTopBottomBig = padding * 2;
   static const double paddingLeftRightSmall = padding / 1.5;
 
+  static const double paddingListTopBottom = 20;
+
   static const double appBarTitle = 18;
   static const double appBarHeight = 56;
 
