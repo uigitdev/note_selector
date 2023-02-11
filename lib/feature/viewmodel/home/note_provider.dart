@@ -18,5 +18,16 @@ class NoteProvider extends ChangeNotifier {
     final noteList = noteListStreamHolder.data!;
     noteList[position] = noteModel;
     noteListStreamHolder.addData(noteList);
+    _startUpdates(noteModel);
+  }
+
+  void _startUpdates(NoteModel noteModel) async {
+    await Future.wait([_repo.updateNote(noteModel)]).then((_) async {
+      noteSyncStreamHolder.addData(true);
+      await Future.delayed(const Duration(seconds: 1));
+      noteSyncStreamHolder.addData(false);
+    }).onError((error, stackTrace) {
+      noteSyncStreamHolder.addError(error!);
+    });
   }
 }

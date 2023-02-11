@@ -34,7 +34,7 @@ class NoteItemUpdateRequest extends HTTPRequestHolder<NoteModel> {
   @override
   HTTPRequestHolderDummyResponse get dummyResponse => HTTPRequestHolderDummyResponse(
         isDummyResponse: true,
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 3),
         json: {
           "userId": noteModel.userId,
           "id": noteModel.id,
