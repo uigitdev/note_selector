@@ -29,4 +29,5 @@ class Textbook{
 
   static const String globalErrorInfo = 'Something went wrong';
 
+  static const String completed = 'Completed';
 }
