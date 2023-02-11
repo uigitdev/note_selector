@@ -1,4 +1,4 @@
 import 'package:note_selector/note_selector.dart';
 
-final routerLocator = RouterLocator();
+final routeLocator = RouteLocator();
 final userLocator = UserLocator();

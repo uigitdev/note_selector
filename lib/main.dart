@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: Textbook.appName,
       debugShowCheckedModeBanner: false,
-      initialRoute: RouterLocator.initRoute(),
-      routes: RouterLocator.routes(),
-      onUnknownRoute: RouterLocator.unknownRoute(),
-      navigatorKey: routerLocator.navigatorKey,
+      initialRoute: RouteLocator.initialRoute(),
+      routes: RouteLocator.routes(),
+      onUnknownRoute: RouteLocator.unknownRoute(),
+      navigatorKey: routeLocator.navigatorKey,
     );
   }
 }
