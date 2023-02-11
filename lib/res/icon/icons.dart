@@ -9,5 +9,5 @@ class MIcons {
 
   static const homeNavigationProfileDefault = Icons.person_rounded;
 
-  static const error = Icons.error_rounded;
+  static const error = Icons.cloud_off_rounded;
 }
