@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
                           return Scaffold(
                             appBar: MAppBar(title: userData!.username),
                             body: _homePageContentLoader(pageData!),
+                            floatingActionButton: _noteSyncFab(),
                             bottomNavigationBar: BottomNavigationBar(
                               selectedItemColor: MTheme.accent,
                               currentIndex: provider.getCurrentIndexByPageState(pageData),
@@ -60,4 +61,41 @@ class HomePage extends StatelessWidget {
         return const HomeProfileContent();
     }
   }
+
+  Widget _noteSyncFab() => IgnorePointer(
+        child: Consumer<NoteProvider>(
+          builder: (context, provider, _) => StreamHolderBuilder<bool>(
+            streamHolder: provider.noteSyncStreamHolder,
+            builder: (context, state, isSync, error) {
+              switch (state) {
+                case StreamHolderState.none:
+                  return const SizedBox();
+                case StreamHolderState.hasError:
+                  return FloatingActionButton(
+                    backgroundColor: MTheme.error,
+                    onPressed: () {},
+                    child: const Icon(MIcons.error),
+                  );
+                case StreamHolderState.hasData:
+                  if (isSync!) {
+                    return FloatingActionButton(
+                      backgroundColor: MTheme.fab,
+                      onPressed: () {},
+                      child: const SizedBox(
+                        width: Dimens.buttonProgressHeight,
+                        height: Dimens.buttonProgressHeight,
+                        child: CircularProgressIndicator(
+                          color: MTheme.accent,
+                          strokeWidth: 3,
+                        ),
+                      ),
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
+              }
+            },
+          ),
+        ),
+      );
 }

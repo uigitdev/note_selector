@@ -8,4 +8,6 @@ class MIcons {
   static const homeNavigationNoteDefault = Icons.notes_rounded;
 
   static const homeNavigationProfileDefault = Icons.person_rounded;
+
+  static const error = Icons.error_rounded;
 }
