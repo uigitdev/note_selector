@@ -14,6 +14,7 @@ class Providers {
       case ProviderAccess.home:
         providers.add(ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()));
         providers.add(ChangeNotifierProvider<ProfileProvider>(create: (_) => ProfileProvider()));
+        providers.add(ChangeNotifierProvider<NoteProvider>(create: (_) => NoteProvider()));
         break;
     }
 
