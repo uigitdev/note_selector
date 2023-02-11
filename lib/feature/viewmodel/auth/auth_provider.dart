@@ -24,8 +24,8 @@ class AuthProvider extends ChangeNotifier {
         });
         if (user != null) {
           userLocator.userStreamHolder.addData(user);
-          routerLocator.closePage();
-          routerLocator.openPageByName(RouterName.home);
+          routeLocator.closePage();
+          routeLocator.openPageByRouteName(RouteName.home);
         }
         loginButtonStateStreamHolder.addData(false);
       } else {
@@ -47,8 +47,8 @@ class AuthProvider extends ChangeNotifier {
         });
         if (user != null) {
           userLocator.userStreamHolder.addData(user);
-          routerLocator.closePage();
-          routerLocator.openPageByName(RouterName.home);
+          routeLocator.closePage();
+          routeLocator.openPageByRouteName(RouteName.home);
         }
         registerButtonStateStreamHolder.addData(false);
       } else {

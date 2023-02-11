@@ -1,47 +1,51 @@
 import 'package:note_selector/note_selector.dart';
 
-enum RouterName {
-  auth('/auth'),
-  home('/home');
+enum RouteName {
+  auth(page: AuthPage()),
+  home(page: HomePage());
 
-  const RouterName(this.path);
+  const RouteName({required this.page});
 
-  final String path;
+  final Widget page;
 }
 
-class RouterLocator {
-  static final _instance = RouterLocator._internal();
+class RouteLocator {
+  static final _instance = RouteLocator._internal();
 
-  RouterLocator._internal();
+  RouteLocator._internal();
 
-  factory RouterLocator() => _instance;
+  factory RouteLocator() => _instance;
 
-  final navigatorKey = GlobalKey<NavigatorState>();
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
+  GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
   ///Stores all of available pages in the app.
   static Map<String, Widget Function(BuildContext)> routes() {
     final routes = <String, Widget Function(BuildContext)>{};
-    routes.putIfAbsent(RouterName.auth.path, () => (context) => const AuthPage());
-    routes.putIfAbsent(RouterName.home.path, () => (context) => const HomePage());
-
-    assert(routes.keys.length == RouterName.values.length, 'Missing route item'.toUpperCase());
+    for (var routeName in RouteName.values) {
+      routes.putIfAbsent(_getPathByRouteName(routeName), () => (context) => routeName.page);
+    }
+    assert(routes.keys.length == RouteName.values.length, 'Missing route item'.toUpperCase());
     return routes;
   }
 
-  ///Starting page.
-  static String initRoute() => RouterName.auth.path;
+  static String _getPathByRouteName(RouteName routeName) => '/${routeName.name.toLowerCase()}';
 
-  ///Defined unknown router in that case if the selected route is not exist.
+  ///Starting page.
+  static String initialRoute() => _getPathByRouteName(RouteName.auth);
+
+  ///Defined unknown route in that case if the selected route is not exist.
   static Route<dynamic> Function(RouteSettings) unknownRoute() => (_) => MaterialPageRoute(builder: (_) => const UnknownPage());
 
-  ///Open page by [RouterName].
-  void openPageByName(RouterName routerName, {Map<String, dynamic> args = const {}}) => navigatorKey.currentState!.pushNamed(routerName.path, arguments: args);
+  ///Open page by [RouteName].
+  void openPageByRouteName(RouteName routeName, {Map<String, dynamic> args = const {}}) => _navigatorKey.currentState!.pushNamed(_getPathByRouteName(routeName), arguments: args);
 
   ///Close the current page.
-  void closePage() => navigatorKey.currentState!.pop();
+  void closePage() => _navigatorKey.currentState!.pop();
 
   ///Close all of opened pages. Example:. to navigate to the first page if the user sign out.
-  void closeAll(RouterName routerName) => navigatorKey.currentState!.pushNamedAndRemoveUntil(routerName.path, (route) => false);
+  void closeAll(RouteName routeName) => _navigatorKey.currentState!.pushNamedAndRemoveUntil(_getPathByRouteName(routeName), (route) => false);
 
   ///Get dropped arguments. If no arguments is dropped the map will be empty.
   static Map<String, dynamic> getArguments(BuildContext context) => (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map<String, dynamic>;
