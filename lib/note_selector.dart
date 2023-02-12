@@ -46,3 +46,4 @@ export 'package:note_selector/api/parser/note/note_list_parser.dart';
 export 'package:note_selector/feature/repository/note/note_repository_impl.dart';
 export 'package:note_selector/feature/view/common/note_item.dart';
 export 'package:note_selector/api/request/note/note_item_update_request.dart';
+export 'package:note_selector/api/model/friend/friend_model.dart';
