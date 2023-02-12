@@ -26,12 +26,14 @@ class NoteListRequest extends HTTPRequestHolder<List<NoteModel>> {
   HTTPRequestHolderDummyResponse get dummyResponse => HTTPRequestHolderDummyResponse(
         isDummyResponse: false,
         duration: const Duration(seconds: 2),
-        json: {
-          "userId": 0,
-          "id": 0,
-          "title": "Test note",
-          "completed": false,
-        },
+        json: [
+          {
+            "userId": 0,
+            "id": 0,
+            "title": "Test note",
+            "completed": false,
+          }
+        ],
         dummyErrorResponse: HTTPRequestHolderDummyErrorResponse(
           isDummyErrorResponse: false,
           error: ErrorHint('note/user-id-not-found'),
