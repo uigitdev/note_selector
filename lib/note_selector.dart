@@ -52,3 +52,5 @@ export 'package:note_selector/feature/repository/friend/friend_repository.dart';
 export 'package:note_selector/api/request/friend/friend_list_request.dart';
 export 'package:note_selector/feature/viewmodel/home/friend_provider.dart';
 export 'package:note_selector/feature/repository/friend/friend_repository_impl.dart';
+export 'package:note_selector/feature/view/common/friend_item.dart';
+export 'dart:math';

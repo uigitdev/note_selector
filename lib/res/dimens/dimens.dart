@@ -1,4 +1,4 @@
-class Dimens{
+class Dimens {
   Dimens._();
 
   static const double title = 20;
@@ -19,4 +19,8 @@ class Dimens{
   static const double buttonProgressHeight = buttonHeight / 2.5;
   static const double buttonRadius = 4;
 
+  static const double friendListHeight = friendListItemHeight + friendPaddingTop + (padding * 3);
+  static const double friendListItemHeight = 80;
+  static const double friendListItemRadius = friendListItemHeight / 2;
+  static const double friendPaddingTop = 5;
 }
