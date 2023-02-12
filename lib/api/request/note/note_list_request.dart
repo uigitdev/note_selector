@@ -1,6 +1,10 @@
 import 'package:note_selector/note_selector.dart';
 
 class NoteListRequest extends HTTPRequestHolder<List<NoteModel>> {
+  final UserModel userModel;
+
+  NoteListRequest(this.userModel);
+
   @override
   HTTPRequestProtocol get protocol => HTTPRequestProtocol.HTTPS;
 

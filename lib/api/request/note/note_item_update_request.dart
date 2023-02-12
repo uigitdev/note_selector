@@ -1,9 +1,10 @@
 import 'package:note_selector/note_selector.dart';
 
 class NoteItemUpdateRequest extends HTTPRequestHolder<NoteModel> {
+  final UserModel userModel;
   final NoteModel noteModel;
 
-  NoteItemUpdateRequest(this.noteModel);
+  NoteItemUpdateRequest(this.userModel, this.noteModel);
 
   @override
   HTTPRequestProtocol get protocol => HTTPRequestProtocol.HTTPS;
