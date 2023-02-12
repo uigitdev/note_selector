@@ -1,4 +1,4 @@
-class Textbook{
+class Textbook {
   Textbook._();
 
   static const String appName = 'Note selector';
@@ -30,4 +30,7 @@ class Textbook{
   static const String globalErrorInfo = 'Something went wrong';
 
   static const String completed = 'Completed';
+
+  static const String listTitleFriends = 'Friends';
+  static const String listTitleNotes = 'Notes';
 }

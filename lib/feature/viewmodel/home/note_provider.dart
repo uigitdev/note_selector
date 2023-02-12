@@ -5,24 +5,24 @@ class NoteProvider extends ChangeNotifier {
   final noteListStreamHolder = StreamHolder<List<NoteModel>?>(null);
   final noteSyncStreamHolder = StreamHolder<bool>(false);
 
-  void initNotes() async {
-    final noteList = await _repo.getNotes().catchError((e) {
+  void initNotes(UserModel userModel) async {
+    final noteList = await _repo.getNotes(userModel).catchError((e) {
       noteListStreamHolder.addError(e);
       return null;
     });
     if (noteList != null) noteListStreamHolder.addData(noteList);
   }
 
-  void updateCompletedStatus(NoteModel noteModel, int position) {
+  void updateCompletedStatus(UserModel userModel, NoteModel noteModel, int position) {
     noteModel.changeCompletedStatus(!noteModel.completed);
     final noteList = noteListStreamHolder.data!;
     noteList[position] = noteModel;
     noteListStreamHolder.addData(noteList);
-    _startUpdates(noteModel);
+    _startUpdates(userModel, noteModel);
   }
 
-  void _startUpdates(NoteModel noteModel) async {
-    await Future.wait([_repo.updateNote(noteModel)]).then((_) async {
+  void _startUpdates(UserModel userModel, NoteModel noteModel) async {
+    await Future.wait([_repo.updateNote(userModel, noteModel)]).then((_) async {
       noteSyncStreamHolder.addData(true);
       await Future.delayed(const Duration(seconds: 1));
       noteSyncStreamHolder.addData(false);

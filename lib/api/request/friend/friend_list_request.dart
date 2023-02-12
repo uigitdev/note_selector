@@ -1,9 +1,9 @@
 import 'package:note_selector/note_selector.dart';
 
-class NoteListRequest extends HTTPRequestHolder<List<NoteModel>> {
+class FriendListRequest extends HTTPRequestHolder<List<FriendModel>> {
   final UserModel userModel;
 
-  NoteListRequest(this.userModel);
+  FriendListRequest(this.userModel);
 
   @override
   HTTPRequestProtocol get protocol => HTTPRequestProtocol.HTTPS;
@@ -15,13 +15,13 @@ class NoteListRequest extends HTTPRequestHolder<List<NoteModel>> {
   String get host => 'jsonplaceholder.typicode.com';
 
   @override
-  String get path => '/todos';
+  String get path => '/users';
 
   @override
   JSONParserType get parserType => JSONParserType.LIST;
 
   @override
-  JSONListParser<List<NoteModel>> get listParser => NoteListParser.fromJson;
+  JSONListParser<List<FriendModel>> get listParser => FriendListParser.fromJson;
 
   @override
   HTTPRequestHolderSettings get settings => HTTPRequestHolderSettings(isDebugPrint: false);
@@ -32,15 +32,14 @@ class NoteListRequest extends HTTPRequestHolder<List<NoteModel>> {
         duration: const Duration(seconds: 2),
         json: [
           {
-            "userId": 0,
-            "id": 0,
-            "title": "Test note",
-            "completed": false,
+            "id": 1,
+            "name": "Leanne Graham",
+            "username": "Bret",
           }
         ],
         dummyErrorResponse: HTTPRequestHolderDummyErrorResponse(
           isDummyErrorResponse: false,
-          error: ErrorHint('note/user-id-not-found'),
+          error: ErrorHint('friend/not-found'),
         ),
       );
 }

@@ -42,4 +42,22 @@ class MTextStyle {
         color: MTheme.subtitle,
         fontSize: Dimens.subtitle,
       );
+
+  static TextStyle get listTitle => const TextStyle(
+        color: MTheme.title,
+        fontSize: Dimens.title,
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle friendTextIcon(Color color) => TextStyle(
+        color: color,
+        fontSize: Dimens.title,
+        fontWeight: FontWeight.bold,
+      );
+
+  static TextStyle get friendTitle => const TextStyle(
+        color: MTheme.title,
+        fontSize: Dimens.info,
+        fontWeight: FontWeight.w400,
+      );
 }
