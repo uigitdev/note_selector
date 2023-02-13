@@ -63,7 +63,16 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
         builder: (context, state, friendList, error) {
           switch (state) {
             case StreamHolderState.none:
-              return const CircularProgressIndicator();
+              return const SizedBox(
+                width: double.maxFinite,
+                height: Dimens.friendListHeight,
+                child: SkeletonList(
+                  count: 10,
+                  item: SkeletonFriendItem(),
+                  separatorItem: SizedBox(width: Dimens.paddingLeftRightSmall),
+                  scrollDirection: Axis.horizontal,
+                ),
+              );
             case StreamHolderState.hasError:
               return const SizedBox();
             case StreamHolderState.hasData:
@@ -73,6 +82,7 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
                 children: [
                   _listTitle(Textbook.listTitleFriends, friendList!.length),
                   SizedBox(
+                    width: double.maxFinite,
                     height: Dimens.friendListHeight,
                     child: ListView.separated(
                       padding: const EdgeInsets.only(
@@ -102,8 +112,11 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
         builder: (context, state, noteList, error) {
           switch (state) {
             case StreamHolderState.none:
-              return const Center(
-                child: CircularProgressIndicator(color: MTheme.accent),
+              return const SkeletonList(
+                count: 10,
+                item: SkeletonNoteItem(),
+                physics: NeverScrollableScrollPhysics(),
+                separatorItem: SizedBox(height: Dimens.paddingListTopBottom),
               );
             case StreamHolderState.hasError:
               return const ErrorBody();

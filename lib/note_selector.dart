@@ -54,3 +54,7 @@ export 'package:note_selector/feature/viewmodel/home/friend_provider.dart';
 export 'package:note_selector/feature/repository/friend/friend_repository_impl.dart';
 export 'package:note_selector/feature/view/common/friend_item.dart';
 export 'dart:math';
+export 'package:skeletons/skeletons.dart';
+export 'package:note_selector/feature/view/common/skeleton_list.dart';
+export 'package:note_selector/feature/view/common/skeleton_friend_item.dart';
+export 'package:note_selector/feature/view/common/skeleton_note_item.dart';
