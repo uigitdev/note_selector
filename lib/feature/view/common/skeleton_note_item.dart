@@ -45,7 +45,6 @@ class SkeletonNoteItem extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: Dimens.skeletonNoteItemTextTopPadding),
           ],
         ),
       );
