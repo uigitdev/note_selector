@@ -2,7 +2,11 @@ import 'package:note_selector/note_selector.dart';
 
 class FriendProvider extends ChangeNotifier {
   final _repo = FriendRepositoryImpl();
+
+  ///[friendListStreamHolder] is not available in [FriendBottomSheetItemContent]
   final friendListStreamHolder = StreamHolder<List<FriendModel>?>(null);
+
+  ///[friendNoteListStreamHolder] is available just in [FriendBottomSheetItemContent]
   final friendNoteListStreamHolder = StreamHolder<List<NoteModel>?>(null);
 
   void initFriendList() async {
