@@ -1,10 +1,6 @@
 import 'package:note_selector/note_selector.dart';
 
 class FriendListRequest extends HTTPRequestHolder<List<FriendModel>> {
-  final UserModel userModel;
-
-  FriendListRequest(this.userModel);
-
   @override
   HTTPRequestProtocol get protocol => HTTPRequestProtocol.HTTPS;
 

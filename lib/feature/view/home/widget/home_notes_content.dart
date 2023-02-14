@@ -10,11 +10,8 @@ class HomeNotesContent extends StatefulWidget {
 class _HomeNotesContentState extends State<HomeNotesContent> {
   @override
   void initState() {
-    final userModel = userLocator.userStreamHolder.data;
-    if (userModel != null) {
-      context.read<NoteProvider>().initNotes(userModel);
-      context.read<FriendProvider>().initFriendList(userModel);
-    }
+    context.read<NoteProvider>().initNotes();
+    context.read<FriendProvider>().initFriendList();
     super.initState();
   }
 
