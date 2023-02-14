@@ -24,39 +24,48 @@ class _FriendItemState extends State<FriendItem> {
   }
 
   @override
-  Widget build(BuildContext context) => Center(
-        child: SizedBox(
-          width: Dimens.friendListItemHeight,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: Dimens.friendListItemHeight,
-                height: Dimens.friendListItemHeight,
-                decoration: BoxDecoration(
-                  color: randomColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(Dimens.friendListItemRadius),
-                ),
-                child: Center(
-                  child: Text(
-                    _getFirstCharFromName(widget.friendModel),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: MTextStyle.friendTextIcon(randomColor),
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: () => BottomSheetFrame.show(context,
+            content: MultiProvider(
+              providers: Providers.providersByAccess(ProviderAccess.friendNote),
+              child: FriendBottomSheetItemContent(
+                friendModel: widget.friendModel,
+              ),
+            )),
+        child: Center(
+          child: SizedBox(
+            width: Dimens.friendListItemHeight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: Dimens.friendListItemHeight,
+                  height: Dimens.friendListItemHeight,
+                  decoration: BoxDecoration(
+                    color: randomColor.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(Dimens.friendListItemRadius),
+                  ),
+                  child: Center(
+                    child: Text(
+                      _getFirstCharFromName(widget.friendModel),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: MTextStyle.friendTextIcon(randomColor),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: Dimens.friendPaddingTop),
-              Text(
-                widget.friendModel.name,
-                maxLines: 2,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: MTextStyle.friendTitle,
-              ),
-            ],
+                const SizedBox(height: Dimens.friendPaddingTop),
+                Text(
+                  widget.friendModel.name,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: MTextStyle.friendTitle,
+                ),
+              ],
+            ),
           ),
         ),
       );
