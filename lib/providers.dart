@@ -17,6 +17,9 @@ class Providers {
         providers.add(ChangeNotifierProvider<NoteProvider>(create: (_) => NoteProvider()));
         providers.add(ChangeNotifierProvider<FriendProvider>(create: (_) => FriendProvider()));
         break;
+
+      ///Added to [FriendBottomSheetItemContent] class.
+      ///In that case only [friendNoteListStreamHolder] will be available in the provider.
       case ProviderAccess.friendNote:
         providers.add(ChangeNotifierProvider<FriendProvider>(create: (_) => FriendProvider()));
         break;
