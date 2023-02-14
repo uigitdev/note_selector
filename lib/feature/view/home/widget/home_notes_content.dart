@@ -29,32 +29,6 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
         ),
       );
 
-  Widget _listTitle(String title, int count) => Padding(
-        padding: const EdgeInsets.only(
-          left: Dimens.padding,
-          right: Dimens.padding,
-          top: Dimens.paddingTopBottomSmall,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              '$title ($count)',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: MTextStyle.listTitle,
-            ),
-            const SizedBox(height: Dimens.paddingTopBottomSmall),
-            Container(
-              width: double.maxFinite,
-              height: 1,
-              color: MTheme.divider,
-            ),
-          ],
-        ),
-      );
-
   Widget _friendList(FriendProvider provider) => StreamHolderBuilder<List<FriendModel>?>(
         streamHolder: provider.friendListStreamHolder,
         builder: (context, state, friendList, error) {
@@ -77,7 +51,10 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  _listTitle(Textbook.listTitleFriends, friendList!.length),
+                  ListTitle(
+                    title: Textbook.listTitleFriends,
+                    count: friendList!.length,
+                  ),
                   SizedBox(
                     width: double.maxFinite,
                     height: Dimens.friendListHeight,
@@ -122,7 +99,10 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  _listTitle(Textbook.listTitleNotes, noteList!.length),
+                  ListTitle(
+                    title: Textbook.listTitleNotes,
+                    count: noteList!.length,
+                  ),
                   ListView.separated(
                     padding: const EdgeInsets.only(
                       top: Dimens.paddingListTopBottom,
