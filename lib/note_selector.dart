@@ -59,3 +59,7 @@ export 'package:note_selector/feature/view/common/skeleton/skeleton_list.dart';
 export 'package:note_selector/feature/view/common/skeleton/skeleton_friend_item.dart';
 export 'package:note_selector/feature/view/common/skeleton/skeleton_note_item.dart';
 export 'package:note_selector/api/framework/http_request_wrapper.dart';
+export 'package:note_selector/feature/view/common/framework/bottom_sheet_frame.dart';
+export 'package:note_selector/feature/view/common/item/friend_bottom_sheet_item_content.dart';
+export 'package:note_selector/feature/view/common/framework/list_title.dart';
+export 'package:note_selector/api/request/friend/friend_note_list_request.dart';

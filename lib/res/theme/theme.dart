@@ -17,4 +17,6 @@ class MTheme {
   static const error = Colors.red;
 
   static const fab = Colors.white;
+
+  static const bottomSheetBackground = Colors.white;
 }
