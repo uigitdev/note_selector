@@ -5,4 +5,9 @@ class FriendRepositoryImpl extends FriendRepository {
   Future<List<FriendModel>?> getFriends() async => await HTTPRequestWrapper(
         FriendListRequest(),
       ).send();
+
+  @override
+  Future<List<NoteModel>?> getFriendNote(FriendModel friendModel) async => await HTTPRequestWrapper(
+        FriendNoteListRequest(friendModel),
+      ).send();
 }

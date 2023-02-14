@@ -1,6 +1,6 @@
 import 'package:note_selector/note_selector.dart';
 
-enum ProviderAccess { auth, home }
+enum ProviderAccess { auth, home, friendNote }
 
 class Providers {
   Providers._();
@@ -15,6 +15,12 @@ class Providers {
         providers.add(ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()));
         providers.add(ChangeNotifierProvider<ProfileProvider>(create: (_) => ProfileProvider()));
         providers.add(ChangeNotifierProvider<NoteProvider>(create: (_) => NoteProvider()));
+        providers.add(ChangeNotifierProvider<FriendProvider>(create: (_) => FriendProvider()));
+        break;
+
+      ///Added to [FriendBottomSheetItemContent] class.
+      ///In that case only [friendNoteListStreamHolder] will be available in the provider.
+      case ProviderAccess.friendNote:
         providers.add(ChangeNotifierProvider<FriendProvider>(create: (_) => FriendProvider()));
         break;
     }

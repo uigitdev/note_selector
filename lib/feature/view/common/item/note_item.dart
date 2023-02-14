@@ -3,11 +3,13 @@ import 'package:note_selector/note_selector.dart';
 class NoteItem extends StatelessWidget {
   final NoteModel noteModel;
   final int position;
+  final bool isJustView;
 
   const NoteItem({
     Key? key,
     required this.noteModel,
     required this.position,
+    this.isJustView = false,
   }) : super(key: key);
 
   @override
@@ -36,29 +38,33 @@ class NoteItem extends StatelessWidget {
                     noteModel.title,
                     style: MTextStyle.noteTitle,
                   ),
-                  GestureDetector(
-                    onTap: () => context.read<NoteProvider>().updateCompletedStatus(noteModel, position),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            Textbook.completed,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: MTextStyle.noteCompleted,
+                  isJustView
+                      ? const SizedBox(
+                          height: Dimens.paddingTopBottomSmall,
+                        )
+                      : GestureDetector(
+                          onTap: () => context.read<NoteProvider>().updateCompletedStatus(noteModel, position),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  Textbook.completed,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: MTextStyle.noteCompleted,
+                                ),
+                              ),
+                              AbsorbPointer(
+                                child: Checkbox(
+                                  value: noteModel.completed,
+                                  onChanged: (_) {},
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        AbsorbPointer(
-                          child: Checkbox(
-                            value: noteModel.completed,
-                            onChanged: (_) {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(height: Dimens.paddingTopBottomSmall),
                   Container(
                     width: double.maxFinite,

@@ -38,4 +38,7 @@ class Dimens {
   static const double skeletonNoteItemTextHeight = 15;
   static const double skeletonNoteItemTextRadius = skeletonNoteItemTextHeight / 2;
   static const double skeletonNoteItemCheckboxRadius = skeletonNoteItemCheckboxHeight * 0.3;
+
+  static const double bottomSheetRadius = 8;
+  static double bottomSheetFriendItemHeight(BuildContext context) => MediaQuery.of(context).size.height * 0.6;
 }

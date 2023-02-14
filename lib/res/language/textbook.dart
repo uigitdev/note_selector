@@ -33,4 +33,6 @@ class Textbook {
 
   static const String listTitleFriends = 'Friends';
   static const String listTitleNotes = 'Notes';
+
+  static const String friendNotes = "'s notes";
 }
