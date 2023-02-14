@@ -36,39 +36,28 @@ class NoteItem extends StatelessWidget {
                     noteModel.title,
                     style: MTextStyle.noteTitle,
                   ),
-                  StreamHolderBuilder<UserModel?>(
-                    streamHolder: userLocator.userStreamHolder,
-                    builder: (context, state, userModel, _) {
-                      switch (state) {
-                        case StreamHolderState.none:
-                        case StreamHolderState.hasError:
-                          return const SizedBox();
-                        case StreamHolderState.hasData:
-                          return GestureDetector(
-                            onTap: () => context.read<NoteProvider>().updateCompletedStatus(userModel!, noteModel, position),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    Textbook.completed,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: MTextStyle.noteCompleted,
-                                  ),
-                                ),
-                                AbsorbPointer(
-                                  child: Checkbox(
-                                    value: noteModel.completed,
-                                    onChanged: (_) {},
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                      }
-                    },
+                  GestureDetector(
+                    onTap: () => context.read<NoteProvider>().updateCompletedStatus(noteModel, position),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            Textbook.completed,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: MTextStyle.noteCompleted,
+                          ),
+                        ),
+                        AbsorbPointer(
+                          child: Checkbox(
+                            value: noteModel.completed,
+                            onChanged: (_) {},
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: Dimens.paddingTopBottomSmall),
                   Container(

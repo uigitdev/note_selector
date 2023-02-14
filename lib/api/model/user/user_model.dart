@@ -15,5 +15,11 @@ class UserModel {
         email: json['email'],
       );
 
+  Map<String, dynamic> toJson() => {
+        'username': username,
+        'name': name,
+        'email': email,
+      };
+
   bool isFillAttributes() => username.isNotEmpty && name.isNotEmpty && email.isNotEmpty;
 }

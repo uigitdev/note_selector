@@ -4,8 +4,8 @@ class FriendProvider extends ChangeNotifier {
   final _repo = FriendRepositoryImpl();
   final friendListStreamHolder = StreamHolder<List<FriendModel>?>(null);
 
-  void initFriendList(UserModel userModel) async {
-    final friends = await _repo.getFriends(userModel).catchError((e) {
+  void initFriendList() async {
+    final friends = await _repo.getFriends().catchError((e) {
       friendListStreamHolder.addError(e);
       return null;
     });
