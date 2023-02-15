@@ -27,4 +27,34 @@ void main() {
       () => expect(requestWrapper.dummyResponse!.json is Map<String, dynamic>, true),
     );
   });
+
+  group('Testing the parser of the auth requests', () {
+    test('Testing the login request', () async {
+      final userLoginModel = UserLoginModel(
+        username: 'my_username',
+        password: 'my_password',
+      );
+      final request = UserLoginRequest(userLoginModel);
+      final response = await HTTPRequestWrapper(request, forTesting: true).send();
+
+      expect(response!.username, userLoginModel.username, reason: 'Must to be "${userLoginModel.username}"');
+      expect(response.name.isNotEmpty, true, reason: 'Must not to be empty');
+      expect(response.email.isNotEmpty, true, reason: 'Must not to be empty');
+    });
+
+    test('Testing the register request', () async {
+      final userRegisterModel = UserRegisterModel(
+        username: 'my_username',
+        name: 'My Name',
+        email: 'myname@email.com',
+        password: 'my_password',
+      );
+      final request = UserRegisterRequest(userRegisterModel);
+      final response = await HTTPRequestWrapper(request, forTesting: true).send();
+
+      expect(response!.username.isNotEmpty, true, reason: 'Must not to be empty');
+      expect(response.name.isNotEmpty, true, reason: 'Must not to be empty');
+      expect(response.email.isNotEmpty, true, reason: 'Must not to be empty');
+    });
+  });
 }
