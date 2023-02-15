@@ -56,7 +56,7 @@ class HTTPRequestWrapper<T> extends HTTPRequestHolder<T> {
     final headers = _request.headers;
     headers['apiKey'] = '760f94f7-edfb-4322-b532-3ec34c3216a8'; //DON'T store API key in the app!
     final user = userLocator.userStreamHolder.data;
-    if (user != null) headers.putIfAbsent('currentUser', () => user.toJson());
+    if (user != null) headers['currentUser'] = user.username;
     return headers;
   }
 }
