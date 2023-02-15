@@ -37,7 +37,11 @@ class HTTPRequestWrapper<T> extends HTTPRequestHolder<T> {
   Map<String, dynamic> get headers => _mergedHeaders();
 
   @override
-  HTTPRequestHolderSettings get settings => _request.settings;
+  HTTPRequestHolderSettings get settings => forTesting
+      ? HTTPRequestHolderSettings(
+          isDebugPrint: true,
+        )
+      : _request.settings;
 
   @override
   HTTPRequestHolderDummyResponse? get dummyResponse => forTesting
