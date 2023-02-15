@@ -2,8 +2,9 @@ import 'package:note_selector/note_selector.dart';
 
 class HTTPRequestWrapper<T> extends HTTPRequestHolder<T> {
   final HTTPRequestHolder<T> _request;
+  final bool forTesting;
 
-  HTTPRequestWrapper(this._request);
+  HTTPRequestWrapper(this._request, {this.forTesting = false});
 
   @override
   HTTPRequestMethod get method => _request.method;
@@ -36,16 +37,26 @@ class HTTPRequestWrapper<T> extends HTTPRequestHolder<T> {
   Map<String, dynamic> get headers => _mergedHeaders();
 
   @override
-  HTTPRequestHolderSettings get settings => _request.settings;
+  HTTPRequestHolderSettings get settings => forTesting
+      ? HTTPRequestHolderSettings(
+          isDebugPrint: true,
+        )
+      : _request.settings;
 
   @override
-  HTTPRequestHolderDummyResponse? get dummyResponse => _request.dummyResponse;
+  HTTPRequestHolderDummyResponse? get dummyResponse => forTesting
+      ? HTTPRequestHolderDummyResponse(
+          isDummyResponse: true,
+          duration: const Duration(),
+          json: _request.dummyResponse != null ? _request.dummyResponse!.json : {},
+        )
+      : _request.dummyResponse;
 
   Map<String, dynamic> _mergedHeaders() {
     final headers = _request.headers;
-    headers['apiKey'] = '760f94f7-edfb-4322-b532-3ec34c3216a8';
+    headers['apiKey'] = '760f94f7-edfb-4322-b532-3ec34c3216a8'; //DON'T store API key in the app!
     final user = userLocator.userStreamHolder.data;
-    if (user != null) headers.addAll(user.toJson());
+    if (user != null) headers.putIfAbsent('currentUser', () => user.toJson());
     return headers;
   }
 }
