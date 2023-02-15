@@ -28,7 +28,7 @@ void main() {
     );
   });
 
-  group('Testing the parser of the auth requests', () {
+  group('Testing the parser of the auth and user requests', () {
     test('Testing the login request', () async {
       final userLoginModel = UserLoginModel(
         username: 'my_username',
@@ -55,6 +55,21 @@ void main() {
       expect(response!.username.isNotEmpty, true, reason: 'Must not to be empty');
       expect(response.name.isNotEmpty, true, reason: 'Must not to be empty');
       expect(response.email.isNotEmpty, true, reason: 'Must not to be empty');
+    });
+
+    test('Testing the user update request', () async {
+      final newUserModel = UserModel(
+        username: 'my_new_username',
+        name: 'My New Name',
+        email: 'mynewname@email.com',
+      );
+
+      final request = UserUpdateRequest(newUserModel);
+      final response = await HTTPRequestWrapper(request, forTesting: true).send();
+
+      expect(response!.username, newUserModel.username, reason: 'Must to be "${newUserModel.username}"');
+      expect(response.name, newUserModel.name, reason: 'Must to be "${newUserModel.name}"');
+      expect(response.email, newUserModel.email, reason: 'Must to be "${newUserModel.email}"');
     });
   });
 }
