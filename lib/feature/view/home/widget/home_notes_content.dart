@@ -45,7 +45,7 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
                 ),
               );
             case StreamHolderState.hasError:
-              return const SizedBox();
+              return const ErrorBody();
             case StreamHolderState.hasData:
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

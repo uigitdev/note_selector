@@ -100,4 +100,24 @@ void main() {
       expect(response.email, newUserModel.email, reason: 'Must to be "${newUserModel.email}"');
     });
   });
+
+  test('Testing the parser of the note request', () async {
+    final userModel = UserModel(
+      username: 'my_username',
+      name: 'My Name',
+      email: 'myname@email.com',
+    );
+
+    userLocator.userStreamHolder.addData(userModel);
+
+    final request = NoteListRequest();
+    final requestWrapper = HTTPRequestWrapper(request, forTesting: true);
+
+    expect(requestWrapper.headers['currentUser'], userModel.username);
+    expect((requestWrapper.dummyResponse!.json as List).isNotEmpty, true);
+
+    final response = await requestWrapper.send();
+
+    expect(response != null, true, reason: 'Must not to be null');
+  });
 }

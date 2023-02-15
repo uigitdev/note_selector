@@ -43,6 +43,7 @@ class NoteItem extends StatelessWidget {
                           height: Dimens.paddingTopBottomSmall,
                         )
                       : GestureDetector(
+                          key: const Key('note_item_checkbox_tap'),
                           onTap: () => context.read<NoteProvider>().updateCompletedStatus(noteModel, position),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,6 +59,7 @@ class NoteItem extends StatelessWidget {
                               ),
                               AbsorbPointer(
                                 child: Checkbox(
+                                  key: const Key('note_item_checkbox'),
                                   value: noteModel.completed,
                                   onChanged: (_) {},
                                 ),
