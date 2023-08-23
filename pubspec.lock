@@ -151,10 +151,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
+      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.5"
+    version: "1.1.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -428,10 +428,10 @@ packages:
     dependency: "direct main"
     description:
       name: uigitdev_request_holder
-      sha256: "9eab5ebfc531ee76ec7d54493fcc3b86d9ae3e3ef82816a10daa19ffabe70ea9"
+      sha256: "10be806d6254bbc37697349acf633e9d818b1c96f38a98b0d8823d52e3379066"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.4"
   uigitdev_stream_holder:
     dependency: "direct main"
     description:
@@ -489,5 +489,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=3.0.0-0 <4.0.0"
+  dart: ">=3.0.0 <4.0.0"
   flutter: ">=1.17.0"
