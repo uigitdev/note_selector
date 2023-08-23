@@ -28,7 +28,7 @@ class HTTPRequestWrapper<T> extends HTTPRequestHolder<T> {
   JSONListParser<T>? get listParser => _request.listParser;
 
   @override
-  Map<String, dynamic> get requestBody => _request.requestBody;
+  dynamic get requestBody => _request.requestBody;
 
   @override
   Map<String, dynamic> get queryParams => _request.queryParams;

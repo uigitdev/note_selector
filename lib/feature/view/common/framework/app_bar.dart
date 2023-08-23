@@ -1,6 +1,6 @@
 import 'package:note_selector/note_selector.dart';
 
-class MAppBar extends StatelessWidget with PreferredSizeWidget {
+class MAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
   @override
